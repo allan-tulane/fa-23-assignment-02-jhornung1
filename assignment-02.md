@@ -24,22 +24,23 @@ In this assignment we'll work on applying the methods we've learned to analyze r
 
   * $W(n)=8W(n/2)+n^3$
 
-  the time complexity/asymptotic upper bound is $\theta(n^3 log(n))$
+  The time complexity/asymptotic upper bound is $\theta(n^3 log(n))$
  
   * $W(n)=49W(n/25)+n^{3/2}\log n$
 
-
+  The time complexity/asymptotic upper bound is $\theta(n^{3/2} log(n))$
  
   * $W(n)=W(n-1)+2$
 
-
+  The time complexity/asymptotic upper bound is $O(n)$
  
   * $W(n)= W(n-1)+n^c$, with $c\geq 1$
 
-
+  The time complexity/asymptotic upper bound is $\theta(n^{c+1})$
  
   * $W(n)=W(\sqrt{n})+1$
 
+  The time complexity/asymptotic upper bound is $O(log(n))$
 
 2. Suppose that for a given task you are choosing between the following three algorithms:
 
@@ -59,6 +60,7 @@ In this assignment we'll work on applying the methods we've learned to analyze r
     What are the asymptotic running times of each of these algorithms?
     Which algorithm would you choose?
 
+  Algorithm $\mathcal{A}$ has a running time of $O(n^{\log_2{5}})$, $\mathcal{B}$ has a running time of $O(n)$, and $\mathcal{C}$ has a running time of $O(n^2 \log n)$. I would choose $\mathcal{B}$ because it is not quadratic, it is linear (unlike the other two options).
 
 3. Now that you have some practice solving recurrences, let's work on
   implementing some algorithms. In lecture we discussed a divide and
