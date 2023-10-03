@@ -19,35 +19,25 @@ In this assignment we'll work on applying the methods we've learned to analyze r
   The time complexity/asymptotic upper bound is $\theta(n log(n))$
 
   * $W(n)=9W(n/3)+n^2$
-.  
-.  
-.  
-.  
-.  
+
+  The time complexity/asymptotic upper bound is $\theta(n^2 log(n))$
+
   * $W(n)=8W(n/2)+n^3$
-.  
-.  
-.  
-.  
-.  
+
+  the time complexity/asymptotic upper bound is $\theta(n^3 log(n))$
+ 
   * $W(n)=49W(n/25)+n^{3/2}\log n$
-.  
-.  
-.  
-.  
-.  
+
+
+ 
   * $W(n)=W(n-1)+2$
-.  
-.  
-.  
-.  
-.  
+
+
+ 
   * $W(n)= W(n-1)+n^c$, with $c\geq 1$
-.  
-.  
-.  
-.  
-.  
+
+
+ 
   * $W(n)=W(\sqrt{n})+1$
 
 
