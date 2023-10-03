@@ -12,14 +12,12 @@ In this assignment we'll work on applying the methods we've learned to analyze r
 
   * $W(n)=5W(n/4)+n$
 
-  The time complexity/asymptotic upper bound is $Theta(n^{log_4(5)})$
+  The time complexity/asymptotic upper bound is $\theta(n^{log_4(5)})$
 
   * $W(n)=7W(n/7)+n$
-.  
-.  
-.  
-.  
-.  
+
+  The time complexity/asymptotic upper bound is $\theta(n log(n))$
+
   * $W(n)=9W(n/3)+n^2$
 .  
 .  
