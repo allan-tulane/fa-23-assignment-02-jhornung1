@@ -43,20 +43,47 @@ def pad(x,y):
         y = ['0'] + y
     return x,y
 
+def subquadratic_multiply(x, y, memo={}):
+    # Base case: If either x or y is zero, return zero
+    if len(x.binary_vec) == 1 or len(y.binary_vec) == 1:
+        return x.decimal_val * y.decimal_val
 
+    # Check if the result is already memoized
+    if (x.decimal_val, y.decimal_val) in memo:
+        return memo[(x.decimal_val, y.decimal_val)]
 
-def subquadratic_multiply(x, y):
-    ### TODO
-    pass
-    ###
+    # Convert x and y to binary vectors of equal length
+    x_vec, y_vec = pad(x.binary_vec, y.binary_vec)
 
+    # Calculate the number of bits
+    n = len(x_vec)
 
+    # Divide x and y into two halves
+    x_high, x_low = split_number(x_vec)
+    y_high, y_low = split_number(y_vec)
+
+    # Recursively calculate the products
+    a = subquadratic_multiply(x_high, y_high, memo)
+    b = subquadratic_multiply(x_low, y_low, memo)
+
+    x_mod = x_high.decimal_val + x_low.decimal_val
+    y_mod = y_high.decimal_val + y_low.decimal_val
+
+    newX = BinaryNumber(x_mod)
+    newY = BinaryNumber(y_mod)
+
+    c = subquadratic_multiply(newX, newY, memo)
+
+    # Calculate the result using the Karatsuba multiplication formula
+    result = (a << n) + ((c - a - b) << (n // 2)) + b
+
+    # Memoize the result
+    memo[(x.decimal_val, y.decimal_val)] = result
+
+    return result
 
 def time_multiply(x, y, f):
     start = time.time()
     # multiply two numbers x, y using function f
     return (time.time() - start)*1000
-
-    
-    
 
