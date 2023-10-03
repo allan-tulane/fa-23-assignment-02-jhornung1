@@ -8,11 +8,11 @@ In this assignment we'll work on applying the methods we've learned to analyze r
 1. Derive asymptotic upper bounds of work for each recurrence below.
   * $W(n)=2W(n/3)+1$
 
-  The time complexity is $O(n^{log_3(2)})$
+  The time complexity/asymptotic upper bound is $O(n^{log_3(2)})$
 
   * $W(n)=5W(n/4)+n$
 
-  
+  The time complexity/asymptotic upper bound is $Theta(n^{log_4(5)})$
 
   * $W(n)=7W(n/7)+n$
 .  
