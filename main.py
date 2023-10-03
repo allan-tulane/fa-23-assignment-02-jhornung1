@@ -44,25 +44,28 @@ def pad(x,y):
     return x,y
 
 def subquadratic_multiply(x, y, memo={}):
-    # Base case: If either x or y is zero, return zero
+    # Base case: If either x or y has a length of 1 (basically either a 1 or a 0), 
+    # return the multiple
     if len(x.binary_vec) == 1 or len(y.binary_vec) == 1:
         return x.decimal_val * y.decimal_val
 
-    # Check if the result is already memoized
+    # Check if the result is already memoized. This is to solve the recursion problems 
+    # I was having with b = on line 70
     if (x.decimal_val, y.decimal_val) in memo:
         return memo[(x.decimal_val, y.decimal_val)]
 
     # Convert x and y to binary vectors of equal length
     x_vec, y_vec = pad(x.binary_vec, y.binary_vec)
 
-    # Calculate the number of bits
+    # Calculate the number of bits in x_vec (which is the same length as y_vec)
     n = len(x_vec)
 
-    # Divide x and y into two halves
+    # Divide x and y into two equal halves
     x_high, x_low = split_number(x_vec)
     y_high, y_low = split_number(y_vec)
 
-    # Recursively calculate the products
+    # Recursively calculate the products for the three subquadratic values in Karatsuba 
+    # formula
     a = subquadratic_multiply(x_high, y_high, memo)
     b = subquadratic_multiply(x_low, y_low, memo)
 
@@ -77,7 +80,7 @@ def subquadratic_multiply(x, y, memo={}):
     # Calculate the result using the Karatsuba multiplication formula
     result = (a << n) + ((c - a - b) << (n // 2)) + b
 
-    # Memoize the result
+    # Memoize the result as a permanent save
     memo[(x.decimal_val, y.decimal_val)] = result
 
     return result
